@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'polls',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -68,6 +69,7 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = 'popcat.asgi.application'
 WSGI_APPLICATION = "popcat.wsgi.application"
 
 

@@ -1,0 +1,22 @@
+<head>
+    <title>팝켓 이벤트</title>
+</head>
+<body>
+    <div id="messages">
+
+    </div>
+    <input type="button" id="btn" value="asdf">
+    <script>
+        let messages = document.getElementById('messages');
+        let socket = new WebSocket('ws://' + window.location.host + '/ws')
+
+        socket.onmessage = (e) => {
+            messages.innerHTML += e.data;
+        }
+
+        let btn = document.getElementById('btn');
+        btn.onclick = (e) => {
+            socket.send('Hello World!');
+        }
+    </script>
+</body>
