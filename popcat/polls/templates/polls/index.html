@@ -11,12 +11,13 @@
         let socket = new WebSocket('ws://' + window.location.host + '/ws')
 
         socket.onmessage = (e) => {
-            messages.innerHTML += e.data;
+            messages.innerHTML = e.data;
         }
 
         let btn = document.getElementById('btn');
         btn.onclick = (e) => {
-            socket.send('Hello World!');
+            socket.send(1);
         }
+        // let t = setInterval(() => document.getElementById('btn').click(), 100)
     </script>
 </body>
