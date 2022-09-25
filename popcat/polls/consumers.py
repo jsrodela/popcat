@@ -19,6 +19,7 @@ class PopcatConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
+        await self.count(event={'count': str(count)})
 
     async def disconnect(self, code):
         await self.channel_layer.group_discard(
