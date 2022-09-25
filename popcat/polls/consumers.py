@@ -7,6 +7,8 @@ from channels.layers import get_channel_layer
 
 ROOM_GROUP_NAME = 'popcat'
 count = 0
+last_sent_count = 0
+lock = threading.Lock()
 
 
 class PopcatConsumer(AsyncWebsocketConsumer):
@@ -27,8 +29,7 @@ class PopcatConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data=None, bytes_data=None):
         if text_data == '1':
-            global count
-            count += 1
+            add_count()
         else:
             print(text_data)
 
@@ -37,15 +38,25 @@ class PopcatConsumer(AsyncWebsocketConsumer):
 
 
 def send_count():
+    global last_sent_count
     while True:
-        asyncio.run(get_channel_layer().group_send(
-            ROOM_GROUP_NAME,
-            {
-                'type': 'count',
-                'count': str(count)
-            }
-        ))
+        if last_sent_count != count:
+            asyncio.run(get_channel_layer().group_send(
+                ROOM_GROUP_NAME,
+                {
+                    'type': 'count',
+                    'count': str(count)
+                }
+            ))
+            last_sent_count = count
         time.sleep(0.1)
+
+
+def add_count() -> None:
+    global count
+    lock.acquire()
+    count += 1
+    lock.release()
 
 
 threading.Thread(target=send_count).start()
