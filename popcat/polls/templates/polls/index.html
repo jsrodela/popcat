@@ -1,23 +1,11 @@
+{% load static %}
 <head>
     <title>팝켓 이벤트</title>
 </head>
 <body>
-    <div id="messages">
-
-    </div>
+    <div id="count"></div>
+    <div id="win"></div>
     <input type="button" id="btn" value="asdf">
-    <script>
-        let messages = document.getElementById('messages');
-        let socket = new WebSocket('ws://' + window.location.host + '/ws')
 
-        socket.onmessage = (e) => {
-            messages.innerHTML = e.data;
-        }
-
-        let btn = document.getElementById('btn');
-        btn.onclick = (e) => {
-            socket.send(1);
-        }
-        // let t = setInterval(() => document.getElementById('btn').click(), 100)
-    </script>
+    <script src="{% static 'polls/index.js' %}"></script>
 </body>
