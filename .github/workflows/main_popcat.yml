@@ -42,7 +42,7 @@ jobs:
         run: rm -r popcat
         
       - name: Rename popcat directory
-        run: mv -r popcat2 popcat
+        run: mv popcat2 popcat
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
