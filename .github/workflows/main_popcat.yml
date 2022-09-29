@@ -32,6 +32,12 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
+      - name: Move files in django parent directory to current directory
+        run: cp -a popcat/. ./
+        
+      - name: Remove unused directory
+        run: rm -r popcat
+      
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
