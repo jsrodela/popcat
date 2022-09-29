@@ -32,8 +32,8 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
-      - name: Rename popcat directory
-        run: mv -r popcat/popcat popcat/popcat2
+      - name: Rename popcat directory to avoid overlapping
+        run: mv popcat/popcat popcat/popcat2
       
       - name: Move files in django parent directory to current directory
         run: cp -a popcat/. ./
