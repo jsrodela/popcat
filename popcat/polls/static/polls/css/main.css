@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+    color: darkorange;
+    font-size: 4em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h2 {
+    text-align: center;
+    color: cornflowerblue;
+    font-size: 3em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+div#cat {
+    text-align: center;
+}

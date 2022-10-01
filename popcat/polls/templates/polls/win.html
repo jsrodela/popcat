@@ -1,29 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POPCAT.RODELA</title>
-</head>
-<body style="background-color:antiquewhite";>
-<style>
-    h1{
-        color: rgb(159, 226, 206);
-        text-align: center;
-        margin: 80px;
-        font-size: 6em;
-        font-family: 'Courier New', Courier, monospace;
-    }
-    h2{
-        color: rgb(235, 83, 13);
-        text-align: center;
-        font-size: 2em;
-    }
-</style>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'polls/css/win.css' %}">
+{% endblock %}
+
+{% block content %}
     <h1>LUCKY!</h1>
     <h2>스크린샷 후 부스로 오세요!</h2>
-    <div style="text-align : center;">
-        <img src="{% static 'polls/close.png' %}" alt="popcat" width="400" height="600">
-</body>
-</html>
+    <div id="cat">
+        <img src="{% static 'polls/images/close.png' %}" alt="popcat" width="400" height="600">
+    </div>
+{% endblock %}

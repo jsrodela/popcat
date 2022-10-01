@@ -1,0 +1,21 @@
+h1 {
+    color: rgb(159, 226, 206);
+    text-align: center;
+    margin: 80px;
+    font-size: 6em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h2 {
+    color: rgb(235, 83, 13);
+    text-align: center;
+    font-size: 2em;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+div#cat {
+    text-align: center;
+}
