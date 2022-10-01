@@ -7,9 +7,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>NEXT LUCKY NUMBER:<br>1000</h1>
-    <h2>1000</h2>
+    <h1 id="lucky">NEXT LUCKY NUMBER:<br>0</h1>
+    <h2 id="count">0</h2>
+
     <div id="cat">
         <img src="{% static 'polls/images/close.png' %}" alt="popcat" width="400" height="600">
     </div>
+{% endblock %}
+
+{% block script %}
+    {{ block.super }}
+    <script src="{% static 'polls/js/count.js' %}"></script>
 {% endblock %}
