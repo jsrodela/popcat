@@ -1,11 +1,21 @@
+{% extends 'base.html' %}
 {% load static %}
-<head>
-    <title>팝켓 이벤트</title>
-</head>
-<body>
-    <div id="count"></div>
-    <div id="win"></div>
-    <input type="button" id="btn" value="asdf">
 
-    <script src="{% static 'polls/index.js' %}"></script>
-</body>
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'polls/css/main.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1 id="lucky">TOUCH SCREEN<br>TO START</h1>
+    <h2 id="count">0</h2>
+
+    <div id="cat">
+        <img src="{% static 'polls/images/close.png' %}" alt="popcat" width="400" height="600">
+    </div>
+{% endblock %}
+
+{% block script %}
+    {{ block.super }}
+    <script src="{% static 'polls/js/count.js' %}"></script>
+{% endblock %}

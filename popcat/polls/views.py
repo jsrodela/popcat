@@ -1,12 +1,8 @@
 from django.shortcuts import render
 
 
-def start(request):
-    return render(request, 'polls/start.html')
-
-
-def count(request):
-    return render(request, 'polls/count.html')
+def index(request):
+    return render(request, 'polls/index.html')
 
 
 def win(request):
