@@ -47,8 +47,8 @@ jobs:
       - name: Collect static files
         run: python manage.py collectstatic
 
-      - name: Enable production mode
-        run: touch production
+      - name: Update settings
+        run: jq '.production=true | .redis.server="popcat.redis.cache.windows.net"' settings.json > settings.json
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2

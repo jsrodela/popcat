@@ -9,12 +9,17 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import json
 import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# load settings
+with open(BASE_DIR / 'settings.json') as f:
+    conf = json.loads(f.read())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -23,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-yr!+@=vtw))g0$)b-x#0oz+k15rp1(qxvt82@w1yr%(c2u1!$&"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not os.path.isfile('production')
+DEBUG = not conf['production']
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'popcat.azurewebsites.net']
 
@@ -83,7 +88,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [(conf['redis']['server'], conf['redis']['port'])],
         },
     },
 }
