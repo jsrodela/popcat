@@ -41,6 +41,11 @@ function catClick() {
     setTimeout(() => changeImage(false), 300);
 }
 
-cat.addEventListener("touchstart", catClick);
-cat.addEventListener("click", catClick);
+if ("ontouchstart" in document.documentElement) {
+    cat.addEventListener("touchstart", catClick);
+}
+else {
+    cat.addEventListener("click", catClick);
+}
+
 // let t = setInterval(() => document.getElementById('btn').click(), 100)
