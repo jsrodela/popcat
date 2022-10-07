@@ -24,12 +24,12 @@ socket.onmessage = (e) => {
 
 
 // 팝캣 클릭 시
-function catClick(isOpen) {
+function changeImage(isOpen) {
     open.hidden = !isOpen;
     close.hidden = isOpen;
 }
 
-cat.onclick = (e) => {
+function catClick() {
     if(!started) {
         started = true;
         lucky.innerHTML = LUCKY_NUMBER_MESSAGE + '0';
@@ -37,7 +37,10 @@ cat.onclick = (e) => {
     socket.send(1);
 
     new Audio(sound_src).play();
-    catClick(true);
-    setTimeout(() => catClick(false), 300);
+    changeImage(true);
+    setTimeout(() => changeImage(false), 300);
 }
+
+cat.addEventListener("touchstart", catClick);
+cat.addEventListener("click", catClick);
 // let t = setInterval(() => document.getElementById('btn').click(), 100)
