@@ -1,7 +1,6 @@
 h1 {
     color: rgb(159, 226, 206);
     text-align: center;
-    margin: 80px;
     font-size: 6em;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -10,12 +9,17 @@ h2 {
     color: rgb(235, 83, 13);
     text-align: center;
     font-size: 2em;
+    word-break: keep-all;
 }
 
 body {
     background-color: antiquewhite;
+    width: 100%;
+    margin: 0;
 }
 
 div#cat {
     text-align: center;
+    width: 100%;
+    height: auto;
 }
