@@ -9,8 +9,8 @@ let socket = new WebSocket('ws://' + window.location.host + '/ws')
 let started = false;
 
 socket.onmessage = (e) => {
-    if(e.data.length == 1 && e.data[0] == 'W') {
-        location.href = '/win'
+    if(e.data[0] == 'W') {
+        location.href = '/win?secret=' + e.data.substring(1);
     }
     else {
         count.innerHTML = e.data;

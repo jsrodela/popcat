@@ -6,4 +6,9 @@ def index(request):
 
 
 def win(request):
-    return render(request, 'polls/win.html')
+    secret = ''
+    if 'secret' in request.GET:
+        secret = request.GET['secret']
+    return render(request, 'polls/win.html', {
+        'secret': secret
+    })
