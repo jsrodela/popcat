@@ -1,7 +1,7 @@
 h1 {
     text-align: center;
     color: darkorange;
-    font-size: 4em;
+    font-size: 3.5em;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -14,8 +14,16 @@ h2 {
 
 body {
     background-color: antiquewhite;
+    width: 100%;
+    margin: 0;
 }
 
 div#cat {
     text-align: center;
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
 }
