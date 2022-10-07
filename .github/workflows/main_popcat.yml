@@ -48,7 +48,7 @@ jobs:
         run: python manage.py collectstatic
 
       - name: Update settings
-        run: jq '.production=true | .redis.server="${{ AZURE_REDIS_SERVER_ADDRESS }}"' settings.json > settings.json
+        run: jq '.production=true | .redis.server="${{ secrets.AZURE_REDIS_SERVER_ADDRESS }}"' settings.json > settings.json
 
       - name: Check json content
         run: cat settings.json
