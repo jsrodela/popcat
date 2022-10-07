@@ -48,7 +48,7 @@ jobs:
         run: python manage.py collectstatic
 
       - name: Update settings
-        run: echo $(cat settings.json | jq '.production=true | .redis.server="${{ secrets.AZURE_REDIS_SERVER_ADDRESS }}"') > settings.json
+        run: echo $(cat settings.json | jq '.production=true | .redis.address="${{ secrets.AZURE_REDIS_SERVER_ADDRESS }}" .redis.password="${{ secrets.AZURE_REDIS_SERVER_PASSWORD }}"') > settings.json
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2

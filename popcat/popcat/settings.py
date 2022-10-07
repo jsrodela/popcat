@@ -87,11 +87,17 @@ WSGI_APPLICATION = "popcat.wsgi.application"
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [(conf['redis']['server'], conf['redis']['port'])],
-        },
+        'CONFIG': {},
     },
 }
+
+redis = conf['redis']
+if 'password' in redis:
+    CHANNEL_LAYERS['default']['CONFIG']['hosts'] = \
+        [f"redis://:{redis['password']}@{redis['address']}:{redis['port']}/0"]
+else:
+    CHANNEL_LAYERS['default']['CONFIG']['hosts'] = \
+        [(redis['address'], redis['port'])]
 
 
 # Database
