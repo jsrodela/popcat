@@ -11,19 +11,3 @@ h2 {
     font-size: 3em;
     font-family: 'Courier New', Courier, monospace;
 }
-
-body {
-    background-color: antiquewhite;
-    width: 100%;
-    margin: 0;
-}
-
-div#cat {
-    text-align: center;
-    width: 100%;
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
