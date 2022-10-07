@@ -46,6 +46,9 @@ jobs:
         
       - name: Collect static files
         run: python manage.py collectstatic
+
+      - name: Enable production mode
+        run: touch production
       
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
