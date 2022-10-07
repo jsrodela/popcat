@@ -11,11 +11,16 @@
     <h2 id="count">0</h2>
 
     <div id="cat">
-        <img src="{% static 'polls/images/close.png' %}" alt="popcat" width="400" height="600">
+        <img id="close" src="{% static 'polls/images/close.png' %}" width="400" height="600">
+        <img id="open" src="{% static 'polls/images/open.png' %}" width="400" height="600" hidden>
     </div>
+    <audio id="sound" src="{% static 'polls/sounds/pop.mp3' %}" hidden></audio>
 {% endblock %}
 
 {% block script %}
     {{ block.super }}
+    <script>
+        const sound_src = "{% static 'polls/sounds/pop.mp3' %}";
+    </script>
     <script src="{% static 'polls/js/count.js' %}"></script>
 {% endblock %}
