@@ -8,9 +8,12 @@ from channels.layers import get_channel_layer
 
 ROOM_GROUP_NAME = 'popcat'
 LUCKY = {
-    '10': 'SECRET',
-    '100': 'HELLO'
+    '10': 'CODE10',
 }
+
+# test numbers
+for i in range(50, 5000, 50):
+    LUCKY[str(i)] = 'CODE' + str(i)
 
 lucky_numbers = []
 for key in LUCKY.keys():
@@ -18,6 +21,7 @@ for key in LUCKY.keys():
 
 count = 0
 last_sent_count = 0
+next_lucky_number = 0
 lock = threading.Lock()
 
 
@@ -30,6 +34,7 @@ class PopcatConsumer(AsyncWebsocketConsumer):
         )
         await self.accept()
         await self.count(event={'count': str(count)})
+        await self.lucky(event={})
 
     async def disconnect(self, code):
         await self.channel_layer.group_discard(
@@ -46,11 +51,14 @@ class PopcatConsumer(AsyncWebsocketConsumer):
         else:
             print(text_data)
 
-    async def count(self, event):
+    async def count(self, event):  # 현재 카운트 전송
         await self.send(text_data=event['count'])
 
-    async def win(self, secret):
-        await self.send(text_data='W'+secret)
+    async def lucky(self, event):  # 다음 럭키넘버 전송
+        await self.send(text_data='L' + str(next_lucky_number))
+
+    async def win(self, secret):  #
+        await self.send(text_data='W' + secret)
 
 
 def send_count():
@@ -75,12 +83,47 @@ def add_count() -> str:
     lock.acquire()
 
     count += 1
-    if count in lucky_numbers:
+    if count == next_lucky_number:
         result = LUCKY[str(count)]
+        next_lucky()
 
     lock.release()
 
     return result
 
 
+def next_lucky():
+    global next_lucky_number
+
+    try:
+        idx = lucky_numbers.index(next_lucky_number)
+    except ValueError:
+        idx = -1
+
+    if idx + 1 < len(lucky_numbers):
+        next_lucky_number = lucky_numbers[idx + 1]
+    else:
+        next_lucky_number = -1
+
+    # separating as thread to use asyncio.run
+    threading.Thread(target=send_lucky).start()
+
+
+def send_lucky():
+    asyncio.run(get_channel_layer().group_send(
+        ROOM_GROUP_NAME,
+        {
+            'type': 'lucky'
+        }
+    ))
+
+
+def reset_count():
+    global count
+    lock.acquire()
+    count = 0
+    lock.release()
+
+
+next_lucky()
 threading.Thread(target=send_count).start()

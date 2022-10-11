@@ -11,11 +11,18 @@ let started = false;
 const ws_protocol = location.protocol == 'https:' ? 'wss://' : 'ws://'
 let socket = new WebSocket(ws_protocol + window.location.host + '/ws')
 
+let next_lucky_number = '0'
 
 // 데이터 수신 시
 socket.onmessage = (e) => {
     if(e.data[0] == 'W') {
         location.href = '/win?secret=' + e.data.substring(1);
+    }
+    else if(e.data[0] == 'L') {
+        next_lucky_number = e.data.substring(1);
+        if (started) {
+            lucky.innerHTML = LUCKY_NUMBER_MESSAGE + next_lucky_number;
+        }
     }
     else {
         count.innerHTML = e.data;
@@ -32,7 +39,7 @@ function changeImage(isOpen) {
 function catClick() {
     if(!started) {
         started = true;
-        lucky.innerHTML = LUCKY_NUMBER_MESSAGE + '0';
+        lucky.innerHTML = LUCKY_NUMBER_MESSAGE + next_lucky_number;
     }
     socket.send(1);
 
