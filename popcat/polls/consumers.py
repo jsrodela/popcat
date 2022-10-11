@@ -126,4 +126,4 @@ def reset_count():
 
 
 next_lucky()
-threading.Thread(target=send_count).start()
+threading.Thread(target=send_count, daemon=True).start()
