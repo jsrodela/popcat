@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-yr!+@=vtw))g0$)b-x#0oz+k15rp1(qxvt82@w1yr%(c2u1!$&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not conf['production']
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'popcat.azurewebsites.net']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'popcat.azurewebsites.net', 'popcatr.live']
 
 
 # Application definition
