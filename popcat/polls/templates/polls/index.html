@@ -7,12 +7,16 @@
 {% endblock %}
 
 {% block content %}
-    <h1 id="lucky">TOUCH SCREEN<br>TO START</h1>
-    <h2 id="count">0</h2>
+    <div id="content">
+        <div id="text">
+            <h1 id="lucky">TOUCH SCREEN<br>TO START</h1>
+            <h2 id="count">0</h2>
+        </div>
 
-    <div id="cat">
-        <img id="close" src="{% static 'polls/images/close.png' %}">
-        <img id="open" src="{% static 'polls/images/open.png' %}" hidden>
+        <div id="cat">
+            <img id="close" src="{% static 'polls/images/close.png' %}">
+            <img id="open" src="{% static 'polls/images/open.png' %}" hidden>
+        </div>
     </div>
     <audio id="sound" src="{% static 'polls/sounds/pop.mp3' %}" hidden></audio>
 {% endblock %}
@@ -23,4 +27,5 @@
         const sound_src = "{% static 'polls/sounds/pop.mp3' %}";
     </script>
     <script src="{% static 'polls/js/count.js' %}"></script>
+    <script src="{% static 'polls/js/interactive.js' %}"></script>
 {% endblock %}
