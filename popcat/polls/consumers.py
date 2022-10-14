@@ -8,21 +8,16 @@ from channels.layers import get_channel_layer
 
 ROOM_GROUP_NAME = 'popcat'
 LUCKY = {
-    '9999': 'GGG',
-    '35679': 'SOR',
-    '53958': 'FTN',
-    '83218': 'PSE',
-    '129872': 'IEG'
+    '1000': 'TSN',
+    '5678': 'MTR',
+    '12345': 'ABC',
+    '23579': 'PRM',
+    '38645': 'ANY',
+    '52525': 'COE',
+    '77777': 'LKY',
+    '100000': 'FIN',
+    '99999999': 'WOW'
 }
-
-"""
-
-9999
-35679
-53958
-83218
-129872
-"""
 
 lucky_numbers = []
 for key in LUCKY.keys():
