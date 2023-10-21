@@ -2,14 +2,34 @@ body {
     background-color: antiquewhite;
     width: 100%;
     margin: 0;
+    overflow: hidden;
+
+    /* Disable selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#content {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    position: absolute;
+}
+
+#text {
+    overflow: auto;
 }
 
 div#cat {
     text-align: center;
+    width: 100%;
 }
 
 img {
     width: 100%;
     max-width: 600px;
-    height: auto;
+    height: 100%;
+    object-fit: scale-down;
 }

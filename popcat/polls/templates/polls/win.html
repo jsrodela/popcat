@@ -7,10 +7,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>LUCKY!</h1>
-    <h2>스크린샷 후 부스로 오세요!</h2>
-    <h2>CODE: {{ secret }}</h2>
-    <div id="cat">
-        <img src="{% static 'polls/images/close.png' %}" alt="popcat">
+    <div id="content">
+        <div id="text">
+            <h1>LUCKY!</h1>
+            <h2>스크린샷 후 부스로 오세요!</h2>
+            <h2>CODE: {{ secret }}</h2>
+        </div>
+        <div id="cat">
+            <img src="{% static 'polls/images/close.png' %}" alt="popcat">
+        </div>
     </div>
+    <script src="{% static 'polls/js/interactive.js' %}"></script>
 {% endblock %}

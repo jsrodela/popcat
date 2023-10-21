@@ -8,12 +8,16 @@ from channels.layers import get_channel_layer
 
 ROOM_GROUP_NAME = 'popcat'
 LUCKY = {
-    '10': 'CODE10',
+    '1000': 'TSN',
+    '5678': 'MTR',
+    '12345': 'ABC',
+    '23579': 'PRM',
+    '38645': 'ANY',
+    '52525': 'COE',
+    '77777': 'LKY',
+    '100000': 'FIN',
+    '99999999': 'WOW'
 }
-
-# test numbers
-for i in range(50, 5000, 50):
-    LUCKY[str(i)] = 'CODE' + str(i)
 
 lucky_numbers = []
 for key in LUCKY.keys():
