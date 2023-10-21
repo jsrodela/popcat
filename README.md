@@ -18,26 +18,25 @@ Popcat event for Seoul Maker Festival 2022
 ## 개발환경 설정
 > 명령어들은 vscode에서 Ctrl+J를 누르면 나오는 터미널 창에 입력하면 됩니다.
 
-0. Python, vscode, git 설치
-
+### 0. Python, vscode, git 설치
 설치 안되어있는 것들만 설치하면 됩니다
-* Python (>=3.10): https://www.python.org/downloads/
+* Python (>=3.9): https://www.python.org/downloads/
 * Visual Studio Code: https://code.visualstudio.com/
 * Git: https://git-scm.com/download/win
 
 
-1. git clone
+### 1. 프로젝트 다운로드 (git clone)
 ```commandline
 git clone https://github.com/jsrodela/life4cuts
 cd life4cuts
 ```
 
-2. 필요 프로그램 설치
+### 2. 필요 프로그램 설치
 > Redis: WebSocket(실시간 통신)에 사용되는 프로그램
 
 * [Redis for Windows](https://github.com/tporadowski/redis/releases) .msi 다운로드 후 실행하여 설치
 
-3. 가상환경 생성
+### 3. 가상환경 생성
 ```commandline
 python -m venv .venv
 ```
@@ -50,17 +49,17 @@ activate.bat
 cd ../..
 ```
 
-4. 의존 모듈 설치
+### 4. 의존 모듈 설치
 ```commandline
 pip install -r requirements.txt
 ```
 
-5. DB 설정
+### 5. DB 설정
 ```commandline
 python manage.py migrate
 ```
 
-6. settings.json 작성
+### 6. settings.json 작성
 `settings-example.json` 파일에서 `-example` 부분을 제거해준다. 파일 내용은 다음과 같다.
 ```json
 {
@@ -72,7 +71,7 @@ python manage.py migrate
 }
 ```
 
-7. 서버 실행
+### 7. 서버 실행
 
 ```commandline
 python manage.py runserver
