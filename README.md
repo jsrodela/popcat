@@ -27,8 +27,8 @@ Popcat event for Seoul Maker Festival 2022 & 2023
 
 ### 1. 프로젝트 다운로드 (git clone)
 ```commandline
-git clone https://github.com/jsrodela/life4cuts
-cd life4cuts
+git clone https://github.com/jsrodela/popcat
+cd popcat
 ```
 
 ### 2. 필요 프로그램 설치
@@ -38,6 +38,7 @@ cd life4cuts
 
 ### 3. 가상환경 생성
 ```commandline
+cd popcat
 python -m venv .venv
 ```
 
@@ -52,7 +53,7 @@ cd ../..
 ### 4. 의존 모듈 설치
 ```commandline
 pip install cryptography==38.0.4
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 ```
 
 ### 5. DB 설정
