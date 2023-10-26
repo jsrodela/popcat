@@ -25,7 +25,9 @@ socket.onmessage = (e) => {
         }
     }
     else {
-        count.innerHTML = e.data;
+        if (parseInt(e.data) > parseInt(count.innerHTML)) {
+            count.innerHTML = e.data;
+        }
     }
 }
 
@@ -45,6 +47,7 @@ function catClick() {
 
     new Audio(sound_src).play();
     changeImage(true);
+    count.innerHTML = parseInt(count.innerHTML)+1;
     setTimeout(() => changeImage(false), 300);
 }
 

@@ -19,3 +19,6 @@ try {
         return false;
     };
 } catch { }
+
+// 우클릭 방지 (터치스크린)
+document.oncontextmenu = function() { return false; }

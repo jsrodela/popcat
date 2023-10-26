@@ -7,21 +7,9 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.layers import get_channel_layer
 
 ROOM_GROUP_NAME = 'popcat'
-LUCKY = {
-    '1000': 'TSN',
-    '5678': 'MTR',
-    '12345': 'ABC',
-    '23579': 'PRM',
-    '38645': 'ANY',
-    '52525': 'COE',
-    '77777': 'LKY',
-    '100000': 'FIN',
-    '99999999': 'WOW'
-}
 
+LUCKY = {}
 lucky_numbers = []
-for key in LUCKY.keys():
-    lucky_numbers.append(int(key))
 
 count = 0
 last_sent_count = 0
@@ -77,7 +65,7 @@ def send_count():
                 }
             ))
             last_sent_count = count
-        time.sleep(0.1)
+        time.sleep(0.5)
 
 
 def add_count() -> str:
@@ -122,12 +110,44 @@ def send_lucky():
     ))
 
 
-def reset_count():
+def reset_count(number):
     global count
     lock.acquire()
-    count = 0
+    count = number
     lock.release()
 
 
 next_lucky()
 threading.Thread(target=send_count, daemon=True).start()
+
+
+def reset_lucky_number(numbers):
+    global LUCKY, lucky_numbers, next_lucky_number
+    lock.acquire()
+
+    LUCKY = numbers
+    lucky_numbers = [-1]
+    for key in LUCKY.keys():
+        lucky_numbers.append(int(key))
+
+    for i in range(len(lucky_numbers)):
+        if lucky_numbers[i] > count:
+            break
+        next_lucky_number = lucky_numbers[i]
+
+    next_lucky()
+
+    lock.release()
+
+
+reset_lucky_number({
+    '1000': 'TSN',
+    '5678': 'MTR',
+    '12345': 'ABC',
+    '23579': 'PRM',
+    '38645': 'ANY',
+    '52525': 'COE',
+    '77777': 'LKY',
+    '100000': 'FIN',
+    '99999999': 'WOW'
+})

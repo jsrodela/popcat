@@ -1,0 +1,15 @@
+<body>
+    <form method="post">
+        <h3>숫자 목록 변경</h3>
+        <p>가급적 숫자 삭제 x (어떻게 꼬일지 모름)</p>
+        <textarea name="numbers">{{ numbers }}</textarea>
+        <input type="submit">
+        {% csrf_token %}
+    </form>
+    <form method="post">
+        <h3>현재 숫자 변경</h3>
+        <input type="number" name="number" value="{{ number }}">
+        <input type="submit">
+        {% csrf_token %}
+    </form>
+</body>
