@@ -1,7 +1,7 @@
 # popcat
-Popcat event for Seoul Maker Festival 2022
+Popcat event for Seoul Maker Festival 2022 & 2023
 
-2022 서울 메이커축제 출품작: 팝켓 
+2022 & 2023 서울 메이커축제 출품작: 팝켓
 
 ## 프로젝트 구조
 - popcat/polls
@@ -51,6 +51,7 @@ cd ../..
 
 ### 4. 의존 모듈 설치
 ```commandline
+pip install cryptography==38.0.4
 pip install -r requirements.txt
 ```
 
@@ -60,7 +61,6 @@ python manage.py migrate
 ```
 
 ### 6. settings.json 작성
-`settings-example.json` 파일에서 `-example` 부분을 제거해준다. 파일 내용은 다음과 같다.
 ```json
 {
   "production": false,
