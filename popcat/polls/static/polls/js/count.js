@@ -31,6 +31,9 @@ socket.onmessage = (e) => {
     }
 }
 
+socket.onclose = (e) => {
+    alert('⚠️ 서버와 연결이 끊겼습니다. 새로고침하여 다시 연결해주세요.')
+}
 
 // 팝캣 클릭 시
 function changeImage(isOpen) {
