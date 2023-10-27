@@ -12,6 +12,7 @@ const ws_protocol = location.protocol == 'https:' ? 'wss://' : 'ws://'
 let socket = new WebSocket(ws_protocol + window.location.host + '/ws')
 
 let next_lucky_number = '0'
+let clicks = []
 
 // 데이터 수신 시
 socket.onmessage = (e) => {
@@ -52,6 +53,18 @@ function catClick() {
     changeImage(true);
     count.innerHTML = parseInt(count.innerHTML)+1;
     setTimeout(() => changeImage(false), 300);
+
+    let now = Date.now();
+    clicks.push(now)
+    console.log(now)
+    if (clicks.length > 20) {
+        let ten_behind = clicks.shift()
+//        alert (now-ten_behind)
+        if (now - ten_behind < 1000) {
+            socket.close();
+            alert('⚠️ 클릭이 너무 빨라요! 매크로를 끈 후 새로고침 해주세요')
+        }
+    }
 }
 
 if ("ontouchstart" in document.documentElement) {
